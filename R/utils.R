@@ -1,4 +1,3 @@
-
 executeRequest <- function(method, path, params = NULL, body = NULL, retries = 0) {
 
   apiKey <- Sys.getenv("COIN_API_KEY")
@@ -6,17 +5,32 @@ executeRequest <- function(method, path, params = NULL, body = NULL, retries = 0
   if(apiKey == "") stop("No API Key!! Please set CoinAPI key with setAPIKey(<yourkeygoeshere>)")
 
   url <- paste0(BASE_URL, path)
-  METHOD <- getFromNamespace(method, ns = 'httr')
+  switch (method,
+    "GET" = res <- tryCatch(
 
-  res <- tryCatch(
+      httr::GET(url,
+             query = params,
+             body,
+             add_headers(`X-CoinAPI-Key` = apiKey)
+      ),
 
-    METHOD(url,
-           query = params,
-           body,
-           add_headers(`X-CoinAPI-Key` = apiKey)
+      error = function(e) e
+
     ),
 
-    error = function(e) e
+    "POST" = res <- tryCatch(
+
+      httr::GET(url,
+                query = params,
+                body,
+                add_headers(`X-CoinAPI-Key` = apiKey)
+      ),
+
+      error = function(e) e
+
+    ),
+
+    stop("Only 'GET' and 'POST' allowed")
 
   )
 
@@ -30,7 +44,7 @@ executeXtsRequest <- function(method, path, params = NULL, body = NULL, retries 
 
   res <- executeRequest(method, path, params, body, retries)
 
-  xts(res, order.by = as_datetime(res[,indexBy]))
+  xts(res, order.by = lubridate::as_datetime(res[,indexBy]))
 
 }
 
@@ -99,6 +113,6 @@ parseJSONResponse <- function(res) {
 
   resText <- content(res, as = "text")
 
-  fromJSON(resText, flatten = TRUE)
+  jsonlite::fromJSON(resText, flatten = TRUE)
 
 }
