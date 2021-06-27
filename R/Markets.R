@@ -1,3 +1,13 @@
+#' Get list of all exchanges provided by CoinAPI
+#'
+#' @param exchangeId
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' getExchanges()
+#' getExchanges("FTX")
 getExchanges <- function(exchangeId = NULL) {
 
   if(is.list(exchangeId)) {
@@ -16,6 +26,15 @@ getExchanges <- function(exchangeId = NULL) {
 
 }
 
+#' Get URLs of all exchange icons by size
+#'
+#' @param sizeText
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' getExchangeIcons(32)
 getExchangeIcons <- function(sizeText) {
 
   endpoint <- paste0(EXCHANGES_ENDPOINT, "icons/", sizeText)
@@ -24,6 +43,16 @@ getExchangeIcons <- function(sizeText) {
 
 }
 
+#' Get all Assets listed by CoinAPI
+#'
+#' @param assetId
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' getAssets()
+#' getAssets("BTC")
 getAssets <- function(assetId = NULL) {
 
   if(is.list(assetId)) {
@@ -42,6 +71,15 @@ getAssets <- function(assetId = NULL) {
 
 }
 
+#' Get icon URLs for all listed Assets
+#'
+#' @param sizeText
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' getAssetIcons(32)
 getAssetIcons <- function(sizeText) {
 
   endpoint <- paste0(ASSETS_ENDPOINT, "icons/", sizeText)
@@ -50,15 +88,31 @@ getAssetIcons <- function(sizeText) {
 
 }
 
-getCryptoSymbols <- function(symbolId = NULL,
+#' Get all symbols listed by CoinAPI - named to not clash with Quantmod
+#'
+#' @param symbolId
+#' @param exchangeId
+#' @param assetId
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' getCryptoSymbols()
+#' getCryptoSymbols(filterSymbolId = "BTC")
+#' getCryptoSymbols(filterSymbolId = "BTC", filterAssetId = "USD")
+#' getCryptoSymbols(filterSymbolId = "BTC", filterAssetId = "USD", exchangeId = "FTX")
+getCryptoSymbols <- function(filterSymbolId = NULL,
                              exchangeId = NULL,
-                             assetId = NULL) {
+                             filterAssetId = NULL) {
 
-  if(is.list(symbolId) & is.list(exchangeId) & is.list(assetId)) {
+  if(is.list(filterSymbolId) & is.list(exchangeId) & is.list(filterAssetId)) {
 
     endpoint <- SYMBOLS_ENDPOINT
 
-    executeRequest("GET", endpoint, params = list("filter_symbol_id" = listToStringArray(symbolId), "filter_exchange_id" = listToStringArray(exchangeId), "filter_asset_id" = listToStringArray(assetId)))
+    executeRequest("GET", endpoint, params = list("filter_symbol_id" = listToStringArray(filterSymbolId),
+                                                  "filter_exchange_id" = listToStringArray(exchangeId),
+                                                  "filter_asset_id" = listToStringArray(filterAssetId)))
 
   } else {
 
