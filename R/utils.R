@@ -11,7 +11,7 @@ executeRequest <- function(method, path, params = NULL, body = NULL, retries = 0
       httr::GET(url,
              query = params,
              body,
-             add_headers(`X-CoinAPI-Key` = apiKey)
+             httr::add_headers(`X-CoinAPI-Key` = apiKey)
       ),
 
       error = function(e) e
@@ -23,7 +23,7 @@ executeRequest <- function(method, path, params = NULL, body = NULL, retries = 0
       httr::GET(url,
                 query = params,
                 body,
-                add_headers(`X-CoinAPI-Key` = apiKey)
+                httr::add_headers(`X-CoinAPI-Key` = apiKey)
       ),
 
       error = function(e) e
@@ -44,7 +44,7 @@ executeXtsRequest <- function(method, path, params = NULL, body = NULL, retries 
 
   res <- executeRequest(method, path, params, body, retries)
 
-  xts(res, order.by = lubridate::as_datetime(res[,indexBy]))
+  xts::xts(res, order.by = lubridate::as_datetime(res[,indexBy]))
 
 }
 
@@ -111,7 +111,7 @@ setApiKey <- function(apiKey) {
 
 parseJSONResponse <- function(res) {
 
-  resText <- content(res, as = "text")
+  resText <- httr::content(res, as = "text")
 
   jsonlite::fromJSON(resText, flatten = TRUE)
 
