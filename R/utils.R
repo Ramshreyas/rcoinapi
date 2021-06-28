@@ -80,17 +80,6 @@ renameOHLCVColumns <- function(xtsObject, symbolName) {
 
 }
 
-#' Convert Lists to url-parameter compliant string arrays
-#'
-#' Convert R lists to url-parameter compliant string arrays
-#'
-#' @param l
-#'
-#' @return
-#' @export
-#'
-#' @examples
-#' listToStringArray(list("Foo", "Bar"))
 listToStringArray <- function(l) {
 
   stringArray <- ""
