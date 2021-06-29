@@ -18,7 +18,7 @@ R package for coinapi.io’s REST API. Requires an API key.
     You can install the development version from [GitHub](https://github.com/) with:
 
     ``` r
-    # install.packages("devtools")
+    install.packages("devtools")
     devtools::install_github("Ramshreyas/rcoinapi")
 
 ## Usage
