@@ -92,6 +92,15 @@ listToStringArray <- function(l) {
 
 }
 
+#' Set your API Key
+#'
+#' @param apiKey
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' setApiKey(XXXXXXXXXXXXXXXX)
 setApiKey <- function(apiKey) {
 
   Sys.setenv(COIN_API_KEY = apiKey)
