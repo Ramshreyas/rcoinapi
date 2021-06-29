@@ -13,13 +13,15 @@ R package for coinapi.io’s REST API. Requires an API key.
 <!-- You can install the released version of rcoinapi from [CRAN](https://CRAN.R-project.org) with: -->
 <!-- ``` r -->
 <!-- install.packages("rcoinapi") -->
+<!-- ``` -->
 
+You can install the development version from
+[GitHub](https://github.com/) with:
 
-    You can install the development version from [GitHub](https://github.com/) with:
-
-    ``` r
-    install.packages("devtools")
-    devtools::install_github("Ramshreyas/rcoinapi")
+``` r
+install.packages("devtools")
+devtools::install_github("Ramshreyas/rcoinapi")
+```
 
 ## Usage
 
