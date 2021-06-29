@@ -6,7 +6,11 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-R package for the CoinAPI.io REST API. Requires an API key.
+R package for the CoinAPI.io REST API.
+
+Requires an API key: <https://www.coinapi.io/pricing?apikey>
+
+Documentation: <https://docs.coinapi.io/>
 
 ## Installation
 
@@ -23,7 +27,7 @@ install.packages("devtools")
 devtools::install_github("Ramshreyas/rcoinapi")
 ```
 
-## Usage
+## Setup
 
 Load the library
 
@@ -36,4 +40,12 @@ Set your API key (Get your API key at
 
 ``` r
 setApiKey("XXXXXXXXXXXXXXX")
+```
+
+## Usage
+
+List all Exchanges
+
+``` r
+getExchanges()
 ```

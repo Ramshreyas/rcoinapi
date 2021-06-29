@@ -18,7 +18,11 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-R package for the CoinAPI.io REST API. Requires an API key.
+R package for the CoinAPI.io REST API. 
+
+Requires an API key: https://www.coinapi.io/pricing?apikey
+
+Documentation: https://docs.coinapi.io/
 
 ## Installation
 
@@ -34,7 +38,7 @@ You can install the development version from [GitHub](https://github.com/) with:
 install.packages("devtools")
 devtools::install_github("Ramshreyas/rcoinapi")
 ```
-## Usage
+## Setup
 
 Load the library
 
@@ -48,4 +52,10 @@ Set your API key (Get your API key at https://www.coinapi.io/pricing?apikey)
 setApiKey("XXXXXXXXXXXXXXX")
 ```
 
+## Usage
 
+List all Exchanges
+
+``` r
+getExchanges()
+```
