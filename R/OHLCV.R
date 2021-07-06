@@ -88,7 +88,7 @@ getHistoricalOHLCV <- function(assetIdBase,
 
   } else {
 
-    symbolName <- paste0(assetIdBase, "/", assetIdQuote)
+    symbolName <- paste0(assetIdBase, "_", assetIdQuote)
 
     endpoint <- paste0(OHLCV_ENDPOINT, assetIdBase, "/", assetIdQuote, "/history")
 
