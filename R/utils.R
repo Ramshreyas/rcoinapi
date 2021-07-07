@@ -34,8 +34,6 @@ executeRequest <- function(method, path, params = NULL, body = NULL, retries = 0
 
   )
 
-  print(res)
-
   parseJSONResponse(res)
 
 }

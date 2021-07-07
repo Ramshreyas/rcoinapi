@@ -104,6 +104,10 @@ getHistoricalOHLCV <- function(assetIdBase,
 
   }
 
-  renameOHLCVColumns(xtsData, symbolName)
+  data <- renameOHLCVColumns(xtsData, symbolName)
+
+  assign(symbolName, data, envir = .GlobalEnv)
+
+  data
 
 }
