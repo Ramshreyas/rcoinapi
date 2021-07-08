@@ -74,6 +74,10 @@ renameOHLCVColumns <- function(xtsObject, symbolName) {
 
   }
 
+  xtsObject <- xtsObject[,c(5:9)]
+
+  storage.mode(xtsObject) <- "numeric"
+
   xtsObject
 
 }

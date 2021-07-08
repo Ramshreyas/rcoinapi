@@ -108,6 +108,6 @@ getHistoricalOHLCV <- function(assetIdBase,
 
   assign(symbolName, data, envir = .GlobalEnv)
 
-  data
+  symbolName
 
 }
