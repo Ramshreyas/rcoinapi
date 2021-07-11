@@ -34,6 +34,8 @@ executeRequest <- function(method, path, params = NULL, body = NULL, retries = 0
 
   )
 
+  httr::stop_for_status(res)
+
   parseJSONResponse(res)
 
 }
