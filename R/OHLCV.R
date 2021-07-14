@@ -51,7 +51,11 @@ getLatestOHLCV <- function(assetIdBase,
 
   xtsData <- executeXtsRequest("GET", endpoint, params = list("period_id" = periodId, "limit" = as.character(limit), "include_empty_items" = includeEmptyItems))
 
-  renameOHLCVColumns(xtsData, symbolName)
+  data <- renameOHLCVColumns(xtsData, symbolName)
+
+  assign(symbolName, data, envir = .GlobalEnv)
+
+  symbolName
 
 }
 
