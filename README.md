@@ -126,7 +126,7 @@ across all most legitimate SPOT markets which contain both assets in any
 order.
 
 ``` r
-getLatestOHLCV("BITSTAMP_SPOT_BTC_USD", "1MIN", limit = 25)
+getLatestOHLCV("BITSTAMP_SPOT_BTC_USD", periodId = "1MIN", limit = 25)
 getLatestOHLCV("BTC", "USD", periodId = "1MIN", limit = 25)
 ```
 
